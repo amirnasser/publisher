@@ -75,7 +75,7 @@
 
         private void FrmSearchFiles_Load(object sender, EventArgs e)
         {
-            LoadProject();
+            //LoadProject();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,11 +95,11 @@
 
         private void LoadProject()
         {            
-            Projects = Framework.Serializer.XmlDerserialize<ProjectCollection>(ProjectFilename);
-            foreach (var p in Projects)
-            {
-                lstProjects.Items.Add(new ListViewItem(new string[] { p.Name, p.Path }));
-            }
+            //Projects = Framework.Serializer.XmlDerserialize<ProjectCollection>(ProjectFilename);
+            //foreach (var p in Projects)
+            //{
+            //    lstProjects.Items.Add(new ListViewItem(new string[] { p.Name, p.Path }));
+            //}
         }
 
         private void lstProjects_SelectedIndexChanged(object sender, EventArgs e)
@@ -129,12 +129,12 @@
 
         private void SaveProjects()
         {
-            ProjectCollection projects = new ProjectCollection();
-            foreach (ListViewItem item in lstProjects.Items)
-            {
-                projects.Add(new Projects { Name = item.SubItems[0].Text, Path = item.SubItems[1].Text });
-            }
-            Framework.Serializer.XmlSerialize<ProjectCollection>(projects, ProjectFilename);
+            //ProjectCollection projects = new ProjectCollection();
+            //foreach (ListViewItem item in lstProjects.Items)
+            //{
+            //    projects.Add(new Projects { Name = item.SubItems[0].Text, Path = item.SubItems[1].Text });
+            //}
+            //Framework.Serializer.XmlSerialize<ProjectCollection>(projects, ProjectFilename);
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
