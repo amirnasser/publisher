@@ -1,0 +1,9 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Anasser.WHITECAP\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Anasser.WHITECAP\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
+    ]
+  }
+}
