@@ -17,6 +17,7 @@ namespace Publisher
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
     using ICSharpCode.SharpZipLib.Zip;
+    using System.Net;
 
     public partial class FrmPublisher : Form
     {
@@ -209,7 +210,12 @@ namespace Publisher
 
         private void btnFindChanged_Click(object sender, EventArgs e)
         {
-            FrmChanged frmc = new FrmChanged(searchPath);
+            if(Deployment == null)
+            {
+                MessageBox.Show("Please select a site");
+                return;
+            }
+            FrmChanged frmc = new FrmChanged(Deployment.Path);
             if (frmc.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 searchPath = frmc.SearchPath;
@@ -446,7 +452,7 @@ namespace Publisher
                 {
                     while ((tmp = sr.ReadLine()) != null)
                     {
-                        FileCollection.Add(tmp);
+                        FileCollection.Add($"{Deployment.Path}{tmp}");
                     }
                     FileCollection.FillList();
                 }
@@ -467,7 +473,7 @@ namespace Publisher
                 {
                     foreach (string s in FileCollection)
                     {
-                        sw.WriteLine(s);
+                        sw.WriteLine(s.Replace(Deployment.Path, ""));
                     }
                 }
                 MessageBox.Show(string.Format("{0} file saved successfully.", sv.FileName), "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -757,6 +763,7 @@ namespace Publisher
         {
             try
             {
+                HttpClient client = new HttpClient(); ;
                 if (Deployment == null)
                 {
                     MessageBox.Show("Please select a site");
@@ -767,10 +774,18 @@ namespace Publisher
                 fillFilesList();
 
                 if (files.Count == 0)
-                    return;               
-                
-                HttpClient client = new HttpClient();
+                    return;
+
+                if (Deployment.Username != null)
+                {
+       
+                    var authenticationString = $"{Deployment.Username}:{Deployment.Password}";
+                    var base64EncodedAuthenticationString = Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(authenticationString));
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", base64EncodedAuthenticationString);
+                }
+
                 client.BaseAddress = new Uri($"{Deployment.URL}wp-json/webdeploy/v1/");
+                
                 var request = new HttpRequestMessage(HttpMethod.Post, "");
                 
                 using (var MemoryStream = new MemoryStream())
@@ -801,7 +816,7 @@ namespace Publisher
                            var message =
                                await client.PostAsync($"deploy/{Deployment.ApiKey}", content))
                         {
-                            message.EnsureSuccessStatusCode();
+                            //message.EnsureSuccessStatusCode();
                             var input = await message.Content.ReadAsStringAsync();
                                 
                             var respons = JsonConvert.DeserializeObject<Response>(input);
@@ -849,6 +864,17 @@ namespace Publisher
             Deployment = drpSites.SelectedItem as DeploymentFile;
             lblStatus.Text = Deployment.Name;
             System.Diagnostics.Process.Start(Deployment.Path);
+        }
+
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < lstFiles.Items.Count; i++)
+                lstFiles.SetSelected(i, true);
+        }
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

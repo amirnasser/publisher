@@ -1,6 +1,46 @@
-[{
-  "Name": "WooCommerce",
-  "ApiKey": "VaX8jsTpDqQcK9TKGwWDrm9KSCsk9g6F",
-  "URL": "https://woocommerce.whitecapcanada.com/",
-  "Path": "D:\\Projects\\woocommerce.whitecapcanada.com\\"
-}]
+[
+  {
+    "Name": "WooCommerce",
+    "ApiKey": "VaX8jsTpDqQcK9TKGwWDrm9KSCsk9g6F",
+    "URL": "https://woocommerce.whitecapcanada.com/",
+    "Path": "D:\\Projects\\woocommerce.whitecapcanada.com\\"
+  },
+  {
+    "Name": "TIP Production",
+    "ApiKey": "NYkSlzzuqmZcUDWhyz91rmbR",
+    "URL": "https://tip.ontarioracing.com/",
+    "Path": "D:\\Projects\\TIP\\"
+  },
+  {
+    "Name": "Caplans Stage",
+    "ApiKey": "iOKqafRidwccjlK8ZLpUv6QS",
+    "URL": "https://caplans.whitecapcanada.com/",
+    "Path": "D:\\Projects\\Caplans_tfs\\WordPress_\\"
+  },  
+  {
+    "Name": "Darkhorsebet.com",
+    "ApiKey": "VaX8jsTpDqQcK9TKGwWDrm9KSCsk9g6F",
+    "URL": "https://darkhorsebets.com/",
+    "Path": "D:\\Projects\\darkhorse_dev.whitecapcanada.com\\"
+  },
+  {
+    "Name": "woodbine.whitecapcanada.com",
+    "ApiKey": "VaX8jsTpDqQcK9TKGwWDrm9KSCsk9g6Faa",
+    "URL": "https://woodbine.whitecapcanada.com/",
+    "Path": "D:\\Projects\\woodbine_wordpress\\Woodbine_WordPress\\",
+    "Username": "woodbine",
+    "Password": "woodbine"
+  },
+  {
+    "Name": "Darkhorsebet.ca",
+    "ApiKey": "VaX8jsTpDqQcK9TKGwWDrm9KSCsk9g6F",
+    "URL": "https://darkhorsebets.ca/",
+    "Path": "D:\\Projects\\darkhorse_dev.whitecapcanada.com\\"
+  },
+  {
+    "Name": "Woodbine.com",
+    "ApiKey": "VaX8jsTpDqQcK9TKGwWDrm9KSCsk9g6F",
+    "URL": "https://woodbine.com/",
+    "Path": "D:\\Projects\\woodbine_wordpress\\Woodbine_WordPress\\"
+  }
+]
